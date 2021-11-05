@@ -1,0 +1,56 @@
+<!--
+unity webgl responsive
+
+template by dom
+dom@crowscrowscrows.com
+https://twitter.com/zerstoerer
+
+source code on github
+https://github.com/sno/unity-webgl-responsive
+-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>QuinnGame</title>
+  </head>
+  <body>
+    <div class="webgl-wrapper">
+      <div class="aspect"></div>
+      <div class="webgl-content">
+        <div id="unityContainer">
+          <canvas id="unity-canvas" style="background: #231F20"></canvas>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- feel free to remove all credits! -->
+
+
+    <script src="MyLoader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/03.data.unityweb",
+        frameworkUrl: "Build/03.framework.js.unityweb",
+        codeUrl: "Build/03.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "QuinnGame",
+        productVersion: "0.1",
+      }).then((unityInstance) => {
+        myGameInstance = unityInstance;
+      });
+    </script>
+
+    <!-- check for F key press to toggle full screen -->
+
+  </body>
+</html>
