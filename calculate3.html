@@ -31,7 +31,9 @@
             var ttc = document.getElementById("tongTuChat").value;
             var tt = document.getElementById("thuoctinhVo").value;
 
-            document.getElementById("tongTheLuc").innerHTML = numberWithCommas(lvl * ttc * 5000.0 + tt);
+            var dame = lvl * ttc * 5000.0 + parseFloat(tt);
+
+            document.getElementById("tongTheLuc").innerHTML = numberWithCommas(dame);
         }
     </script>
 </head>
