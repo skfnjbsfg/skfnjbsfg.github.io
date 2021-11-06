@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /* 
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        } */
+    </style>
+    <script>
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        function CalTotal() {
+
+            var lvl = document.getElementById("levelMonKhach").value;
+            var ttc = document.getElementById("tongTuChat").value;
+            var tt = document.getElementById("thuoctinhVo").value;
+
+            document.getElementById("tongTheLuc").innerHTML = numberWithCommas(lvl * ttc * 5000.0 + tt);
+        }
+    </script>
+</head>
+
+<body>
+    <div style="overflow-x:auto;">
+
+        <table>
+            <tr>
+
+                <td style="font-size: xx-large; color: red;">DAME MÔN KHÁCH</td>
+                <td style="font-size: xx-large; color: red;" id="tongTheLuc">
+                    0
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td style="font-size: large;">Level Môn Khách (1)</td>
+                <td>
+                    <input type="number" id="levelMonKhach" name="quantity" min="0" value="0" max="5000000000"
+                    onkeyup="CalTotal()">
+                </td>
+            </tr>
+        <!-- </table>
+        <br>
+        <table> -->
+            <tr>
+                <td style="font-size: large;">Tổng tư chất võ Môn Khách (2)</td>
+                <td>
+                    <input type="number" id="tongTuChat" name="quantity" min="0" value="0" max="5000000000"
+                    onkeyup="CalTotal()">
+                </td>
+            </tr>
+        <!-- </table>
+        <br>
+        <table> -->
+            <tr>
+                <td style="font-size: large;">Thuộc tính võ Môn Khách (3)</td>
+                <td>
+                    <input type="number" id="thuoctinhVo" name="quantity" min="0" value="0" max="5000000000"
+                    onkeyup="CalTotal()">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /* 
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        } */
+    </style>
+    <script>
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        function CalTotal() {
+
+            var levelMonKhach = document.getElementById("levelMonKhach").value;
+            var total = 0.0;
+
+            var listIds = ["Vo", "Chinh", "Tri", "Mi"];
+            var listPrefix = ["truoc", "sau", "phantram", "tong"];
+
+            for (let index = 0; index < listIds.length; index++) {
+                const postFix = listIds[index];
+                
+ 
+                var truoc = document.getElementById(listPrefix[0] + postFix).value;
+              
+                var sau = document.getElementById(listPrefix[1] + postFix).value;
+
+                var phantram = document.getElementById(listPrefix[2] + postFix).value;
+
+                var tong = document.getElementById(listPrefix[3] + postFix);
+
+                var perTotal = (sau - truoc) * levelMonKhach * levelMonKhach * 0.1 * (1 + phantram / 100.0);
+                tong.innerHTML =  Math.round(perTotal);
+
+                total += Math.round(perTotal);
+
+            }
+
+            document.getElementById("tongTheLuc").innerHTML = numberWithCommas(total);
+        }
+    </script>
+</head>
+
+<body>
+    <div style="overflow-x:auto;">
+
+        <table>
+            <tr>
+
+                <td style="font-size: xx-large; color: red;">TỔNG THẾ LỰC</td>
+                <td style="font-size: xx-large; color: red;" id="tongTheLuc">
+                    0
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td style="font-size: x-large;">Level Môn Khách</td>
+                <td>
+                    <input type="number" id="levelMonKhach" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()">
+                </td>
+
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr style="background-color: #fbff0011;">
+                <th>Tư Chất</th>
+                <th>Thông Số</th>
+                <th>Giá Trị</th>
+                <th>Thế Lực Tăng</th>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td rowspan="3">Võ</td>
+                <td>Tổng Tư Chất Trước Khi Ép Sách (1)</td>
+                <td><input id="truocVo" type="number" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+                <td rowspan="3" id="tongVo" style="font-size: x-large;"></td>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td>Tổng Tư Chất Sau Khi Ép Sách (1)</td>
+                <td><input id="sauVo" type="number" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td>Phần Trăm Buff Thêm (5) hoặc (9)</td>
+                <td><input type="number" id="phantramVo" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr>
+                <td rowspan="3">TRÍ</td>
+                <td>Tổng Tư Chất Trước Khi Ép Sách (2)</td>
+                <td><input type="number" id="truocTri" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+                <td rowspan="3" id="tongTri" style="font-size: x-large;"></td>
+            </tr>
+            <tr>
+                <td>Tổng Tư Chất Sau Khi Ép Sách (2)</td>
+                <td><input type="number" id="sauTri" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr>
+                <td>Phần Trăm Buff Thêm (6) hoặc (10)</td>
+                <td><input type="number" id="phantramTri" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td rowspan="3">CHÍNH</td>
+                <td>Tổng Tư Chất Trước Khi Ép Sách (3)</td>
+                <td><input type="number" id="truocChinh" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+                <td rowspan="3" id="tongChinh" style="font-size: x-large;"></td>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td>Tổng Tư Chất Sau Khi Ép Sách (3)</td>
+                <td><input type="number" id="sauChinh" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr style="background-color: #efefef;">
+                <td>Phần Trăm Buff Thêm (7) hoặc (11)</td>
+                <td><input type="number" id="phantramChinh" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr>
+                <td rowspan="3">MỊ</td>
+                <td>Tổng Tư Chất Trước Khi Ép Sách (4)</td>
+                <td><input type="number" id="truocMi" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+                <td rowspan="3" id="tongMi" style="font-size: x-large;"></td>
+            </tr>
+            <tr>
+                <td>Tổng Tư Chất Sau Khi Ép Sách (4)</td>
+                <td><input type="number" id="sauMi" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+            <tr>
+                <td>Phần Trăm Buff Thêm (8) hoặc (12)</td>
+                <td><input type="number" id="phantramMi" name="quantity" min="0" value="0" max="5000000000"
+                        onkeyup="CalTotal()"></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
